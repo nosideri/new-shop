@@ -1,0 +1,42 @@
+.title {
+  float: left;
+  /* border: rgb(143, 143, 143) 2px solid; */
+  border-radius: 10px 100px / 120px;
+  padding: 20px;
+  text-shadow: -2px -2px 2px lightblue;
+  background: white;
+}
+
+.desc {
+  /* padding-top: 4%;
+  text-align: center; */
+  font-size: 1.8vw;
+  padding: 30px;
+}
+
+.App-header {
+  padding: 20px 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.5vw;
+  color: black;
+  border-bottom: 2px solid lightblue;
+  background: lightblue;
+}
+
+.button {
+  border: black 1.5px solid;
+  border-radius: 100px 10px / 120px;
+  padding: 10px;
+  background: white;
+  text-shadow: -2px -2px 2px lightblue;
+  color: black;
+}
+
+.button:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: 0.5s;
+}

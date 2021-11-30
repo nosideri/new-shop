@@ -1,0 +1,22 @@
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: 1.5vw;
+  text-align: center;
+  padding: 1%;
+  background-color: lightblue;
+}
+
+.footer-button {
+  background-color: #7fdadd;
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5vw;
+}

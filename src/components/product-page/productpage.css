@@ -1,0 +1,11 @@
+.wrap {
+  border: 2px solid lightblue;
+  border-radius: 25px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.prod-image {
+  max-width: 100%;
+  height: auto;
+}

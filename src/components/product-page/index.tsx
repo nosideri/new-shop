@@ -21,13 +21,13 @@ function ProductPage() {
 
   useEffect(() => {
     if (!item) {
-      // getData();
+      getData();
     }
 
     async function getData() {
       const response = await fetch(`http://localhost:3005/api/product/${id}`);
       const data = await response.json();
-      console.log();
+      console.log(data);
 
       setItem(data);
     }
@@ -40,7 +40,7 @@ function ProductPage() {
         <img src={item?.imageUrl} alt="Product" className="prod-image" />
         <div>
           <h3 data-testid="description"> Description:</h3>
-          <p> {item?.description} </p>
+          <p data-testid="temp"> {item?.description} </p>
         </div>
 
         <p> ${item?.price} </p>

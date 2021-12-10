@@ -7,7 +7,7 @@ const mockData: {
 }[] = [
   {
     id: 0,
-    name: "3D Model",
+    name: "3D Model93901",
     description: "Complete 3D model made in Blender.",
     price: 20,
     imageUrl: "http://placeimg.com/640/480/nature",

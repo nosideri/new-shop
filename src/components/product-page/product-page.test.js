@@ -1,26 +1,51 @@
-import React from "react";
-import { Router } from "react-router-dom";
+import { Route, MemoryRouter } from "react-router-dom";
 import ProductPage from "./index";
 import { render, screen } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import "@testing-library/jest-dom";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
+import { handlers } from "../../mocks/handlers";
+
+const server = setupServer(...handlers);
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
+const renderWithRouter = ({ children }) =>
+  render(
+    <MemoryRouter initialEntries={["products/1"]}>
+      <Route path="products/:id">{children}</Route>
+    </MemoryRouter>
+  );
 
 describe("ProductPage", () => {
-  jest.mock("react-router-dom", () => ({
-    useParams: jest.fn().mockReturnValue({ id: 1 }),
-  }));
+  // jest.mock("react-router-dom", () => ({
+  //   useParams: jest.fn().mockReturnValue({ id: 1 }),
+  // }));
   it("should render Description in an h3", () => {
-    const history = createMemoryHistory();
-    history.push("/products/1");
-    render(
-      <Router history={history}>
-        <ProductPage />
-      </Router>
-    );
-    screen.logTestingPlaygroundURL();
-    // const productPage = wrapper.find("h3");
-    const productPage = screen.getByTestId("description");
+    jest.mock("react-router-dom", () => ({
+      ...jest.requireActual("react-router-dom"),
+      useParams: () => ({
+        id: 0,
+      }),
+    }));
+    // const history = createMemoryHistory();
+    // history.push("/products/1");
+    // render(
+    //   <Router history={history}>
+    //     <ProductPage />
+    //   </Router>
+    // );
+    // screen.logTestingPlaygroundURL();
 
-    expect(productPage).toEqual("Description:");
+    render(<ProductPage />);
+
+    const productPage = screen.getByTestId("description");
+    const productDescription = screen.getByTestId("temp");
+
+    expect(productPage).toBeInTheDocument();
+    expect(productDescription.innerHTML).toHaveTextContent("happy");
   });
 });

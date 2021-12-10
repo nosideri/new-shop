@@ -35,15 +35,11 @@ function ProductGrid() {
           return (
             <div key={mockData.id} className={`item${index + 1}`}>
               <h1>{mockData.name}</h1>
-              {/* get imageUrl to embed the actual pic instead of the link to pic */}
               <img
                 src={mockData.imageUrl}
                 alt="Product"
                 className="prod-image"
               />
-              {/* <h3>
-                <p>{mockData.description}</p>
-              </h3> */}
               <p>${mockData.price}</p>
               <Link to={`/products/${mockData.id}`}>See more</Link>
             </div>

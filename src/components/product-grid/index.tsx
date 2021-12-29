@@ -32,19 +32,21 @@ function ProductGrid() {
       */
     const controller = new AbortController();
 
-    if (items && items.length === 0) {
-      getData();
-    }
+    getData();
 
     async function getData() {
       const signal = controller.signal;
-      const response = await fetch("http://localhost:3005/api/products", {
-        method: "get",
-        signal,
-      });
-      const data = await response.json();
+      try {
+        const response = await fetch("http://localhost:3005/api/products", {
+          method: "get",
+          signal,
+        });
+        const data = await response.json();
 
-      setItems(data);
+        setItems(data);
+      } catch (error) {
+        // console.error(error);
+      }
     }
     return () => {
       controller.abort();

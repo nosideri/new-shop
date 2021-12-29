@@ -1,3 +1,4 @@
+import { compose } from "msw";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./productpage.css";
@@ -20,9 +21,8 @@ function ProductPage() {
   const [item, setItem] = useState<ProductPageType>();
 
   useEffect(() => {
-    if (!item) {
-      getData();
-    }
+    console.log("happy");
+    getData();
 
     async function getData() {
       const response = await fetch(`http://localhost:3005/api/product/${id}`);
